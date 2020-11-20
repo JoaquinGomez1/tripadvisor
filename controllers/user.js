@@ -22,7 +22,8 @@ function User(req, res) {
   async function login() {
     const { data } = req.body;
     const foundUser = await userSchema.findOne({ username: data.username });
-    if (!foundUser) return res.json({ message: "No username found" });
+    if (!foundUser)
+      return res.json({ message: "Username / Password does not match" });
 
     const doPasswordMatch = Bcrypt.compare(data.password, foundUser.password);
     if (!doPasswordMatch)
