@@ -8,26 +8,31 @@ function User(req, res) {
     const foundUser = await userSchema.findOne({
       $or: [{ username: data.username }, { email: data.email }],
     });
-    if (foundUser) return res.json({ message: "Username/email already taken" });
+    if (foundUser)
+      return res.status(400).json({ message: "Username/email already taken" });
 
     const encryptedPassword = await Bcrypt.encript(data.password);
 
     const dataCopy = Object.freeze({ ...data, password: encryptedPassword });
     new userSchema(dataCopy)
       .save()
-      .then(() => this.login())
-      .catch((err) => res.json({ err }));
+      .then(() => User.login())
+      .catch((err) => res.status(400).json({ err }));
   };
 
   async function login() {
     const { data } = req.body;
     const foundUser = await userSchema.findOne({ username: data.username });
     if (!foundUser)
-      return res.json({ message: "Username / Password does not match" });
+      return res
+        .status(400)
+        .json({ message: "Username / Password does not match" });
 
     const doPasswordMatch = Bcrypt.compare(data.password, foundUser.password);
     if (!doPasswordMatch)
-      return res.json({ message: "Username / Password does not match" });
+      return res
+        .status(400)
+        .json({ message: "Username / Password does not match" });
 
     const foundUserCopy = { ...foundUser._doc };
     delete foundUserCopy.password;

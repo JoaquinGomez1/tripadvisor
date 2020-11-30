@@ -1,10 +1,16 @@
 import React from "react";
 import Router from "./router";
+import UserContext from "./components/context/UserContext";
+import TripsContext from "./components/context/TripsContext";
 
 function App() {
   return (
     <div className='w-screen h-screen'>
-      <Router></Router>
+      <TripsContext>
+        <UserContext>
+          <Router />
+        </UserContext>
+      </TripsContext>
     </div>
   );
 }

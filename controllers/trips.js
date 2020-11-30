@@ -10,7 +10,7 @@ function Trips(req, res) {
   async function add() {
     if (!data) return res.json({ message: "No data provided" });
 
-    // Todo figure out how to store and verify images
+    // TODO: figure out how to store and verify images
     try {
       data.author = user._id;
       const savedTrip = await new tripsSchema(data).save();
@@ -32,6 +32,7 @@ function Trips(req, res) {
   }
 
   function remove() {
+    const { tripId } = req.params;
     if (!tripId) return res.json({ message: "No trip id provided" });
 
     tripsSchema

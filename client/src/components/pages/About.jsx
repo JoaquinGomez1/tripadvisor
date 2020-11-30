@@ -1,9 +1,13 @@
 import React from "react";
+import TripListings from "./TripsListing";
 
 export default function About() {
   return (
-    <div>
-      <h1>About page</h1>
+    <div className=' w-full h-full'>
+      <div className='h-20' />
+      <h1 className='text-xl font-bold text-center'>
+        <TripListings />
+      </h1>
     </div>
   );
 }
