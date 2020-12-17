@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserProvider } from "../context/UserContext";
 import EditableField from "../Ui/EditableField";
 import { useHistory } from "react-router-dom";
+import { FadeInOut } from "../Ui/FramerMotion";
 
 export default function User() {
   const { currentUser, setCurrentUser } = useContext(UserProvider);
@@ -15,8 +16,8 @@ export default function User() {
   };
 
   return (
-    <div className='w-screen h-screen pt-20'>
-      <div className='rounded-md bg-yellow-200 shadow-md mx-auto p-3 max-w-lg'>
+    <FadeInOut className='w-screen h-screen pt-40'>
+      <div className='rounded-md text-center bg-yellow-200 shadow-md mx-auto p-3 max-w-lg'>
         <div className='mx-auto'>
           <div className='flex'>
             <h1 className='text-center'>Hello</h1>
@@ -34,6 +35,6 @@ export default function User() {
           </button>
         </div>
       </div>
-    </div>
+    </FadeInOut>
   );
 }

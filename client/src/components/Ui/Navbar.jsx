@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserProvider } from "../context/UserContext";
+import "../../css/Navbar.css";
 
 export default function Navbar() {
   const links = [
@@ -14,9 +15,13 @@ export default function Navbar() {
   const userIsLoggedIn = Object.keys(currentUser).length >= 1;
 
   return (
-    <div className='flex fixed justify-between bg-black z-20 w-full h-20 py-2 text-white mb-20'>
+    <div className='navbar flex rounded-full max-w-xl justify-between fixed bg-gray-300 text-gray-700 z-20 h-20 px-20 py-2 my-2 shadow-md'>
       <div className='m-auto'>
-        <h1 className='text-lg font-bold cursor-pointer'>Navbar</h1>
+        <Link to='/'>
+          <h1 className='text-lg font-bold cursor-pointer text-yellow-600'>
+            Navbar
+          </h1>
+        </Link>
       </div>
       <div className='m-auto'>
         <ul className='flex items-center'>

@@ -1,0 +1,5 @@
+/* Horizontally center the fixed navbar*/
+.navbar {
+  left: 50%;
+  transform: translateX(-50%);
+}

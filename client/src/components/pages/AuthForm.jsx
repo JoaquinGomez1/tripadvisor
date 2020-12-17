@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { UserProvider } from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 
+import { FadeInOut } from "../Ui/FramerMotion";
+
 export default function AuthForm({ component: Component, url, initialState }) {
   const [fields, dispatch] = useReducer(SignInReducer, initialState);
   const [responseMessage, setResponseMessage] = useState();
@@ -37,11 +39,13 @@ export default function AuthForm({ component: Component, url, initialState }) {
   };
 
   return (
-    <Component
-      responseMessage={responseMessage}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      fields={fields}
-    />
+    <FadeInOut className='w-screen h-screen'>
+      <Component
+        responseMessage={responseMessage}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        fields={fields}
+      />
+    </FadeInOut>
   );
 }

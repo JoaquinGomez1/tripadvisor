@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
+import Input from "./Input";
 
 export default function SignInView({
   fields,
@@ -12,29 +14,21 @@ export default function SignInView({
       <div className='mx-auto w-full bg-gray-100 max-w-lg shadow-lg'>
         <h1 className='text-lg text-center my-2 font-bold '>Sign In </h1>
         <form className='mx-auto text-center p-5 w-30 flex flex-col items-center'>
-          <input
+          <Input
             name='username'
             value={fields.username}
             placeholder='Username'
             type='text'
             onChange={handleChange}
-            className='w-full bg-gray-300 p-2 my-4 rounded-md placeholder-gray-600'
           />
-
-          <input
+          <Input
             name='password'
             value={fields.password}
             placeholder='Password'
             type='password'
             onChange={handleChange}
-            className='w-full bg-gray-300 p-2 rounded-md mb-4 placeholder-gray-600'
           />
-
-          <button
-            className='w-full text-white py-2 px-4 hover:bg-yellow-600 bg-yellow-500 rounded-md text-lg font-bold'
-            onClick={handleSubmit}>
-            {responseMessage || "Sign In"}
-          </button>
+          <Button onClick={handleSubmit}>{responseMessage || "Sign in"}</Button>
           <div className='flex w-full px-8 my-3 justify-between text-left items-center'>
             <Link to='/signup'>
               <p className='text-indigo-600 cursor-pointer text-sm'>
