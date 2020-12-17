@@ -17,3 +17,17 @@
 .opacity-90 {
   opacity: 0.9;
 }
+
+@media (max-width: 850px) {
+  .landing-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+}
