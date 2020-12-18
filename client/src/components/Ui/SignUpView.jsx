@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
+import ModalContainer from "./ModalContainer";
 
 export default function SignUpView({ handleChange, fields, handleSubmit }) {
   return (
-    <div className='w-full h-full flex items-center'>
-      <div className='mx-auto w-full bg-gray-100 max-w-lg shadow-lg'>
+    <div className='w-full h-full flex items-center bg-gray-900'>
+      <ModalContainer>
         <h1 className='text-lg text-center my-2 font-bold'>Sign Up</h1>
         <form className='mx-auto text-center p-5 w-30 flex flex-col items-center'>
           <input
@@ -52,7 +53,7 @@ export default function SignUpView({ handleChange, fields, handleSubmit }) {
             </p>
           </div>
         </form>
-      </div>
+      </ModalContainer>
     </div>
   );
 }

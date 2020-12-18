@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import Input from "./Input";
+import ModalContainer from "./ModalContainer";
 
 export default function SignInView({
   fields,
@@ -10,8 +11,8 @@ export default function SignInView({
   responseMessage,
 }) {
   return (
-    <div className='w-full h-full flex items-center'>
-      <div className='mx-auto w-full bg-gray-100 max-w-lg shadow-lg'>
+    <div className='w-full h-full flex items-center bg-gray-900'>
+      <ModalContainer>
         <h1 className='text-lg text-center my-2 font-bold '>Sign In </h1>
         <form className='mx-auto text-center p-5 w-30 flex flex-col items-center'>
           <Input
@@ -41,7 +42,7 @@ export default function SignInView({
             </p>
           </div>
         </form>
-      </div>
+      </ModalContainer>
     </div>
   );
 }

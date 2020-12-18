@@ -29,7 +29,6 @@ export function FramerButton(props) {
     initial: { scale: 1 },
     hover: {
       scale: 1.1,
-      transition: { yoyo: Infinity, duration: 0.8 },
     },
   };
 

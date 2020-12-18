@@ -17,8 +17,8 @@ export default function TripCard({ name, rooms, bathrooms, capacity, img }) {
       initial='hidden'
       animate='show'
       whileHover='hover'
-      className='mx-auto my-2 p-2 max-w-xl h-64 rounded-md shadow-md flex hoverEffect cursor-pointer'>
-      <div className='h-full w-64 my-auto'>
+      className='mx-auto bg-light my-6 max-w-xl h-64 rounded-md shadow-md flex hoverEffect cursor-pointer'>
+      <div className='object-contain w-64 my-auto'>
         <div className='relative pb-56 rounded-md divide-x mr-4 flex'>
           <img
             src={img}
@@ -27,30 +27,35 @@ export default function TripCard({ name, rooms, bathrooms, capacity, img }) {
           />
         </div>
       </div>
-      <div className='flex flex-col text-left'>
-        <h1 className='text-xl block font-bold text-capitalize'> {name}</h1>
+      <div className='flex relative flex-col p-2 text-left'>
+        <h1 className='text-xl block text-brownGray font-bold text-capitalize'>
+          {" "}
+          {name}
+        </h1>
 
-        <div className='text-gray-700 font-light text-md flex'>
-          <div style={{ width: "20px" }} className='mr-2'>
-            <i className='fas fa-bed' />
+        <div className='absolute bottom-0 mb-4'>
+          <div className='text-gray-700 font-light text-md flex'>
+            <div style={{ width: "20px" }} className='mr-2'>
+              <i className='fas fa-bed' />
+            </div>
+            Rooms: {rooms}{" "}
           </div>
-          Rooms: {rooms}{" "}
-        </div>
 
-        <div className='text-gray-700 font-light text-md flex'>
-          <div
-            style={{ width: "20px" }}
-            className='mr-2 flex justify-center items-center  '>
-            <i className='fas fa-toilet' />
+          <div className='text-gray-700 font-light text-md flex'>
+            <div
+              style={{ width: "20px" }}
+              className='mr-2 flex justify-center items-center  '>
+              <i className='fas fa-toilet' />
+            </div>
+            Bathrooms: {bathrooms}{" "}
           </div>
-          Bathrooms: {bathrooms}{" "}
-        </div>
 
-        <div className='text-gray-700 font-light text-md flex'>
-          <div style={{ width: "20px" }} className='mr-2'>
-            <i className='fas fa-user-friends' />
+          <div className='text-gray-700 font-light text-md flex'>
+            <div style={{ width: "20px" }} className='mr-2'>
+              <i className='fas fa-user-friends' />
+            </div>
+            Capacity: {capacity}
           </div>
-          Capacity: {capacity}
         </div>
       </div>
     </motion.div>
