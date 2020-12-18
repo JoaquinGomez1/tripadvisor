@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function EditableField({ text }) {
   const [editField, setEditField] = useState(false);
   const [fieldValue, setFieldValue] = useState(text);
+
+  useEffect(() => setFieldValue(text), [text]);
 
   return (
     <div className='flex w-56 px-2 justify-between'>

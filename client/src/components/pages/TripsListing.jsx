@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { TripContext } from "../context/TripsContext";
 import TripCard from "../Ui/TripCard";
 import { FadeInOut, StaggerChildren } from "../Ui/FramerMotion";
@@ -11,13 +11,17 @@ export default function TripsListing() {
 
   const searchByName = (regex) => {
     const rgx = new RegExp(regex, "i");
-    setDisplayedTrips([...currentTrips].filter((elem) => rgx.test(elem.name)));
+    const filteredArray = [...currentTrips].filter((elem) =>
+      rgx.test(elem.name)
+    );
+    setDisplayedTrips(filteredArray);
   };
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
-    if (e.target.value === "") setDisplayedTrips(currentTrips);
   };
+
+  useEffect(() => searchByName(searchValue), [searchValue]);
 
   return (
     <FadeInOut className='pt-20'>

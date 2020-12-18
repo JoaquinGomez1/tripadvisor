@@ -16,7 +16,9 @@ function User(req, res) {
     const dataCopy = Object.freeze({ ...data, password: encryptedPassword });
     new userSchema(dataCopy)
       .save()
-      .then(() => User.login())
+      .then(() => {
+        User.login();
+      })
       .catch((err) => res.status(400).json({ err }));
   };
 
@@ -38,7 +40,7 @@ function User(req, res) {
     delete foundUserCopy.password;
     // Still have doubts about storing the entire user object or if I should store only their ID
     req.session.user = foundUserCopy;
-    res.json({ message: "Logged in Succesfully" });
+    res.json({ message: "Logged in Succesfully", userData: foundUserCopy });
   }
 
   async function logout() {

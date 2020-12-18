@@ -9,7 +9,6 @@ export default function UserContext(props) {
   useLayoutEffect(() => {
     fetchData("/user").then(({ req, res }) => {
       if (req.status === 200) setCurrentUser(res.user);
-      return;
     });
   }, []);
 
