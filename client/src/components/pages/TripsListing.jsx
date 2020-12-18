@@ -5,7 +5,19 @@ import { FadeInOut, StaggerChildren } from "../Ui/FramerMotion";
 
 export default function TripsListing() {
   const { currentTrips } = useContext(TripContext);
+
+  const [displayedTrips, setDisplayedTrips] = useState(currentTrips);
   const [searchValue, setSearchValue] = useState("");
+
+  const searchByName = (regex) => {
+    const rgx = new RegExp(regex, "i");
+    setDisplayedTrips([...currentTrips].filter((elem) => rgx.test(elem.name)));
+  };
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+    if (e.target.value === "") setDisplayedTrips(currentTrips);
+  };
 
   return (
     <FadeInOut className='pt-20'>
@@ -14,18 +26,17 @@ export default function TripsListing() {
         placeholder='Search'
         type='text'
         value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={handleChange}
+        onKeyDown={(e) =>
+          e.key === "Enter" ? searchByName(searchValue) : null
+        }
       />
 
-      {currentTrips && Array.isArray(currentTrips) && (
-        <StaggerChildren>
-          {currentTrips.map((trip) => (
-            <FadeInOut>
-              <TripCard key={trip._id} {...trip} />
-            </FadeInOut>
-          ))}
-        </StaggerChildren>
-      )}
+      <StaggerChildren>
+        {currentTrips &&
+          Array.isArray(currentTrips) &&
+          displayedTrips.map((trip) => <TripCard key={trip._id} {...trip} />)}
+      </StaggerChildren>
     </FadeInOut>
   );
 }

@@ -7,8 +7,7 @@ import { FadeInOut } from "../Ui/FramerMotion";
 export default function User() {
   const { currentUser, setCurrentUser } = useContext(UserProvider);
   const history = useHistory();
-  if (!currentUser || Object.keys(currentUser).length === 0)
-    history.push("/signin"); // Redirect if not logged in
+  if (Object.keys(currentUser).length === 0) history.push("/signin"); // Redirect if not logged in
 
   const handleLogout = () => {
     fetch("/user/logout");

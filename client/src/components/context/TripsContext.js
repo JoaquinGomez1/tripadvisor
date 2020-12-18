@@ -6,7 +6,7 @@ export default function Context(props) {
   const [currentTrips, setCurrentTrips] = useState([
     {
       _id: "asdasd1a2sd",
-      name: "Hotel room in Vancouver",
+      name: "Hotel room in Toronto",
       rooms: 1,
       capacity: 3,
       bathrooms: 2,
@@ -15,7 +15,7 @@ export default function Context(props) {
     },
     {
       _id: "asdasd1a2sd",
-      name: "Hotel room in Vancouver",
+      name: "Apartment in Vancouver",
       rooms: 1,
       capacity: 3,
       bathrooms: 2,
@@ -24,7 +24,7 @@ export default function Context(props) {
     },
     {
       _id: "asdasd1a2sd",
-      name: "Hotel room in Vancouver",
+      name: "Vancouver",
       rooms: 1,
       capacity: 3,
       bathrooms: 2,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 export default function SignUpView({ handleChange, fields, handleSubmit }) {
   return (
@@ -34,11 +35,11 @@ export default function SignUpView({ handleChange, fields, handleSubmit }) {
             className='w-full bg-gray-300 p-2 rounded-md mb-4 placeholder-gray-600'
           />
 
-          <button
+          <Button
             className='w-full text-white py-2 px-4 hover:bg-yellow-600 bg-yellow-500 rounded-md text-lg font-bold'
             onClick={handleSubmit}>
             Sign Up
-          </button>
+          </Button>
 
           <div className='flex w-full px-8 my-3 justify-between items-center '>
             <Link to='signin'>
