@@ -17,7 +17,7 @@ export default function Landing() {
                 <span className='text-custom-200'> dream</span> vacations{" "}
               </h3>
               <h3 className='text-3x1 mb-10 text-gray'> We'll do the rest </h3>
-              <div className='w-1/2 button-landing-container'>
+              <div className='w-1/2 button-landing-container '>
                 <Link to='/trips'>
                   <Button> View Trips </Button>
                 </Link>

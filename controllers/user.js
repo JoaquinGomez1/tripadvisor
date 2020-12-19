@@ -47,6 +47,26 @@ function User(req, res) {
     req.session.destroy();
   }
 
+  async function update() {
+    const { data } = req.body;
+    if (!data)
+      return res.status(400).json({ message: "You must send a data object" });
+
+    const isObjectEmpty = Object.keys(data).length === 0;
+
+    if (isObjectEmpty)
+      return res.status(400).json({ message: "Data object cannot be empty" });
+
+    // Success case
+    userSchema
+      .findOneAndUpdate(
+        { _id: req.session.user._id },
+        { $set: data },
+        { new: true }
+      )
+      .then((message) => res.json({ message }));
+  }
+
   async function get() {
     // this method only checks if the user is in the session store in or not (which essentially check wheter is logged in or not).
     const { user } = req.session;
@@ -55,7 +75,7 @@ function User(req, res) {
     return res.json({ user });
   }
 
-  return { register, login, logout, get };
+  return { register, login, logout, get, update };
 }
 
 module.exports = User;

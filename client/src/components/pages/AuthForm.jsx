@@ -15,7 +15,8 @@ export default function AuthForm({ component: Component, url, initialState }) {
 
   useEffect(() => {
     // Prevent users entering getting access to this component
-    const userExistsInState = Object.keys(currentUser).length >= 1;
+    const userExistsInState =
+      currentUser && Object.keys(currentUser).length >= 1;
     if (userExistsInState) history.push("/user");
   }, [currentUser, history]);
 
@@ -36,9 +37,9 @@ export default function AuthForm({ component: Component, url, initialState }) {
     };
     const req = await fetch(URL, HEADERS);
     const res = await req.json();
-    setResponseMessage(res?.message);
+    setResponseMessage(res.message);
 
-    if (req.status === 200) setCurrentUser(res?.userData);
+    if (req.status === 200) setCurrentUser(res.userData);
   };
 
   return (

@@ -12,7 +12,7 @@ export default function Navbar() {
     { name: "Profile", url: "/user", mustBeLoggedIn: true },
   ];
   const { currentUser } = useContext(UserProvider);
-  const userIsLoggedIn = Object.keys(currentUser).length >= 1;
+  const userIsLoggedIn = currentUser && Object.keys(currentUser).length >= 1;
 
   return (
     <div className='navbar flex rounded-full max-w-xl justify-between fixed bg-light text-gray-700 z-20 h-20 px-20 py-2 my-2 shadow-md'>
@@ -47,6 +47,8 @@ export default function Navbar() {
                 </Link>
               );
             }
+
+            return null;
           })}
         </ul>
       </div>

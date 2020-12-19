@@ -21,6 +21,7 @@ export default function TripsListing() {
     setSearchValue(e.target.value);
   };
 
+  // eslint-disable-next-line
   useEffect(() => searchByName(searchValue), [searchValue]);
 
   return (

@@ -17,7 +17,7 @@ export default function TripCard({ name, rooms, bathrooms, capacity, img }) {
       initial='hidden'
       animate='show'
       whileHover='hover'
-      className='mx-auto bg-light my-6 max-w-xl h-64 rounded-md shadow-md flex hoverEffect cursor-pointer'>
+      className='mx-auto bg-white my-6 max-w-xl h-64 rounded-md shadow-md flex hoverEffect cursor-pointer'>
       <div className='object-contain w-64 my-auto'>
         <div className='relative pb-56 rounded-md divide-x mr-4 flex'>
           <img

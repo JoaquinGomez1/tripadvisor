@@ -10,7 +10,9 @@ export default function User() {
 
   // Redirect if not logged in
   useEffect(() => {
-    Object.keys(currentUser).length === 0 && history.push("/signin");
+    currentUser &&
+      Object.keys(currentUser).length === 0 &&
+      history.push("/signin");
   }, [currentUser, history]);
 
   const handleLogout = () => {
@@ -18,13 +20,27 @@ export default function User() {
     setCurrentUser({});
   };
 
+  const handleChangeUsername = async (param) => {
+    const HEADERS = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: { username: param } }),
+    };
+    const req = await fetch("/user/update", HEADERS);
+    const res = await req.json();
+    if (req.status === 200) setCurrentUser({ ...res, username: param });
+  };
+
   return (
     <FadeInOut className='w-screen h-screen pt-40'>
-      <div className='rounded-md text-center bg-gray shadow-md mx-auto p-3 max-w-lg'>
+      <div className='rounded-md text-center bg-light shadow-md mx-auto p-3 max-w-lg'>
         <div className='mx-auto'>
           <div className='flex'>
             <h1 className='text-center'>Hello</h1>
-            <EditableField text={currentUser?.username} />
+            <EditableField
+              onSubmitEvent={handleChangeUsername}
+              text={currentUser?.username}
+            />
           </div>
 
           <button

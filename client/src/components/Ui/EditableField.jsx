@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function EditableField({ text }) {
+export default function EditableField({ text, onSubmitEvent }) {
   const [editField, setEditField] = useState(false);
   const [fieldValue, setFieldValue] = useState(text);
 
@@ -23,7 +23,10 @@ export default function EditableField({ text }) {
       )}
       <button onClick={() => setEditField(!editField)}>
         {editField ? (
-          <i className='fas fa-check p-1 text-green-600' />
+          <i
+            className='fas fa-check p-1 text-green-600'
+            onClick={() => onSubmitEvent(fieldValue)}
+          />
         ) : (
           <i className='fas fa-edit p-1 text-gray-800' />
         )}

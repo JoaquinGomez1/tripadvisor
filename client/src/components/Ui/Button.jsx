@@ -6,7 +6,7 @@ const Button = React.forwardRef((props, ref) => {
     <motion.button
       ref={ref}
       {...props}
-      className='w-full text-dark py-2 px-4 hover:text-light bg-red rounded-md text-lg  '>
+      className='w-full text-dark py-2 px-4 hover:text-light bg-red rounded-md text-lg text-white  '>
       {props.children}
     </motion.button>
   );
