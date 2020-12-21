@@ -15,7 +15,7 @@ export default function Navbar() {
   const userIsLoggedIn = currentUser && Object.keys(currentUser).length >= 1;
 
   return (
-    <div className='navbar flex rounded-full max-w-xl justify-between fixed bg-light text-gray-700 z-20 h-20 px-20 py-2 my-2 shadow-md'>
+    <div className='navbar flex w-full justify-between fixed bg-dark text-light z-20 h-20 px-20 py-2 shadow-md'>
       <div className='m-auto'>
         <Link to='/'>
           <h1 className='text-lg font-bold cursor-pointer text-blue-800'>
@@ -24,13 +24,13 @@ export default function Navbar() {
         </Link>
       </div>
       <div className='m-auto'>
-        <ul className='flex items-center'>
+        <ul className='flex items-center '>
           {links.map((each) => {
             // Logged in view
             if (userIsLoggedIn && each.mustBeLoggedIn !== false) {
               return (
                 <Link to={each.url} key={each.url}>
-                  <li className='my-auto mx-2 cursor-pointer transform hover:scale-110 hover:text-blue-800'>
+                  <li className='my-auto mx-2 cursor-pointer transform hover:scale-110 hover:text-red'>
                     {each.name}
                   </li>
                 </Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
             if (!userIsLoggedIn && each.mustBeLoggedIn !== true) {
               return (
                 <Link to={each.url} key={each.url}>
-                  <li className='my-auto mx-2 cursor-pointer transform hover:scale-110 hover:text-blue-800'>
+                  <li className='my-auto mx-2 cursor-pointer transform hover:scale-110 hover:text-red'>
                     {each.name}
                   </li>
                 </Link>
