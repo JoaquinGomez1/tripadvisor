@@ -7,6 +7,7 @@ import SignUp from "./components/pages/SignUp";
 import TripsListing from "./components/pages/TripsListing";
 import Navbar from "./components/Ui/Navbar";
 import User from "./components/pages/User";
+import AddTrips from "./components/pages/AddTrip";
 
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -20,7 +21,8 @@ export default function Router() {
         <Switch location={location} key={location.key}>
           <Route path='/' exact component={Landing} />
           <Route path='/about' component={About} />
-          <Route path='/trips' component={TripsListing} />
+          <Route path='/trips' exact component={TripsListing} />
+          <Route path='/trips/add' component={AddTrips} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signUp' component={SignUp} />
           <Route path='/user' component={User} />
